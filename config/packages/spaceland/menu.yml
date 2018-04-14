@@ -14,11 +14,14 @@ easy_admin:
             - label: 'plant'
               icon: 'shopping-basket'
               children:
-                  - { entity: 'Plant', icon: 'th-list', label: 'menu.plant.list', params: { sortField: 'createdAt' }, default: true }
-                  - { entity: 'Family', icon: 'th-list', label: 'menu.family.list', params: { sortField: 'createdAt' }, default: true }
-
+                  - { entity: 'Plant', icon: 'th-list', label: 'liste_plante', params: { sortField: 'createdAt' }, default: true }
                   - { entity: 'Variety', icon: 'tags', label: 'menu.variety' }
                   - { entity: 'Plant', icon: 'plus-circle', label: 'menu.plant.add', params: { action: 'new' } }
+            - label: 'family'
+              icon: 'tags'
+              children:
+                  - { entity: 'Family', icon: 'th-list', label: 'menu.family.list', params: { sortField: 'createdAt' }, default: true }
+
                   - { entity: 'Family', icon: 'plus-circle', label: 'menu.family.add', params: { action: 'new' } }
 
             - { label: 'menu.user', entity: 'User', icon: 'users' }

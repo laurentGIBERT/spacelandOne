@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../spaceland_14042018/easy-admin-demo/public/bundles/.idea/bundles.iml" filepath="$PROJECT_DIR$/../../spaceland_14042018/easy-admin-demo/public/bundles/.idea/bundles.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/spaceland.iml" filepath="$PROJECT_DIR$/.idea/spaceland.iml" />
     </modules>
   </component>

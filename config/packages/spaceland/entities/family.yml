@@ -21,6 +21,7 @@ easy_admin:
                     - 'id'
                     - { property: 'name', label: 'Label' }
                     - { property: 'parent', label: 'Parent family' }
+                    - { property: 'createdAt', format: 'j / M / Y' }
                     - 'plant'
             show:
                 fields:

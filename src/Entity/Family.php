@@ -9,6 +9,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class Family.
@@ -16,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @author 'Laurent GIBERT'
  *
  * @ORM\Table(name="family")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="FamilyRepository")
  */
 class Family
 {
@@ -53,11 +54,38 @@ class Family
      * @ORM\ManyToOne(targetEntity="Family")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
      **/
-    protected $parent;
+ /*   protected $parent;
+*/
+    /**
+     * The category parent.
+     *
+     * @var Family
+     * @ORM\ManyToOne(targetEntity="Family")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
+     **/
+    public $parent;
+
+    /**
+     * The creation date of the plant.
+     *
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="created_at")
+     */
+    private $createdAt = null;
+
+    /**
+     * The update date of the plant.
+     *
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="updated_at")
+     */
+    private $updatedAt = null;
 
     public function __construct()
     {
         $this->plants = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function __toString()
@@ -144,5 +172,21 @@ class Family
 
         $this->plants->removeElement($plant);
         $plant->removeFamily($this);
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+
     }
 }
