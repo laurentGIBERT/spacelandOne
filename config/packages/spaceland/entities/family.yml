@@ -12,7 +12,7 @@ easy_admin:
             class: App\Entity\Family
             label: 'Families'
             list:
-                title: 'Plant %%entity_label%%'
+                title: 'Family %%entity_label%%'
                 actions:
                     - { name: 'show', label: '', icon: 'search' }
                     - { name: 'edit', label: '', icon: 'edit' }
@@ -27,12 +27,12 @@ easy_admin:
                 fields:
                     - 'id'
                     - { property: 'name', label: 'Label', css_class: 'large' }
-                    - { property: 'parent', label: 'Parent variety' }
+                    - { property: 'parent', label: 'Parent family' }
                     - 'plant'
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'name', label: 'Label', css_class: 'large', help: 'As displayed on the website (the slug is auto-generated)' }
-                    - { property: 'parent', type: 'easyadmin_autocomplete', label: 'Parent category' }
+                    - { property: 'parent', type: 'easyadmin_autocomplete', label: 'Parent family' }
                     # if you want to add plant when creating categories, add the 'by_reference' option
                     # - { property: 'plant', type_options: { by_reference: false } }

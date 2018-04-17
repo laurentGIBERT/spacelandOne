@@ -39,7 +39,7 @@ class Variety
     protected $name;
 
     /**
-     * Plant in the variety.
+     * Plant in the varieties.
      *
      * @var Plant[]
      * @ORM\ManyToMany(targetEntity="Plant", mappedBy="varieties")

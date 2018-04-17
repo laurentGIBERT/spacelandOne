@@ -1,7 +1,7 @@
 parameters:
     locale: 'fr'
-    app.path.product_images: /uploads/images/plant
-    app.path.user_contracts: /uploads/files/user/contracts
+    app.path.product_images: uploads/images/plant
+    app.path.user_contracts: uploads/files/user/contracts
 
 services:
     _defaults:

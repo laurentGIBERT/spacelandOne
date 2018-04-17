@@ -45,7 +45,7 @@ class Family
      * @var Plant[]
      * @ORM\ManyToMany(targetEntity="Plant", mappedBy="families")
      **/
-    protected $plants;
+    public $plants;
 
     /**
      * The category parent.
@@ -61,7 +61,7 @@ class Family
      *
      * @var Family
      * @ORM\ManyToOne(targetEntity="Family")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true, onDelete={"remove"})
      **/
     public $parent;
 

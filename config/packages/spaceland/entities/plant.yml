@@ -20,6 +20,8 @@ easy_admin:
                     - name
                     - enabled
                     - description
+                    - families
+                    #- {property: 'families', type: 'string'}
                     - features
                     - { property: 'price', format: '%.2f', css_class: text-right }
                     #- { property: 'ean', type: 'string' }
@@ -38,6 +40,7 @@ easy_admin:
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - features
                     - varieties
+                    - families
                     - tags
             form:
                 fields:
@@ -47,6 +50,8 @@ easy_admin:
                     - { type: 'divider' }
                     - { property: 'varieties', type: 'easyadmin_autocomplete' }
                     - { type: 'group', css_class: 'col-sm-4', label: 'Plant Details', icon: 'cube' }
+                    - { property: 'families', type: 'easyadmin_autocomplete' }
+
                     #- { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.' }
                     - { property: 'price', type: 'number' }
                     - { type: 'section', label: 'Advanced Settings', icon: 'warning', help: 'Reserved for administrators use' }
@@ -57,4 +62,4 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'tags' }
                     - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
-                    #- { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'imageFile', type: 'vich_image' }

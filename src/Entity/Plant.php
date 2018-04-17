@@ -6,13 +6,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 
 /**
- * Class PLant.
+ * Class Plant.
  *
  * @author Laurent GIBERT
  * @ORM\Table(name="plant")
@@ -71,17 +70,17 @@ class Plant
      *
      * @var string
      */
-    private $image;
+    public $image;
 
     /**
      * This unmapped property stores the binary contents of the image file
      * associated with the plant.
      *
-     * @Vich\UploadableField(mapping="plant_images", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      *
      * @var File
      */
-    private $imageFile;
+    public $imageFile;
 
     /**
      * Features of the plant.
@@ -127,54 +126,21 @@ class Plant
      * (Owning side).
      *
      * @var Variety[]
-     * @ORM\ManyToMany(targetEntity="Variety", inversedBy="plant")
+     * @ORM\ManyToMany(targetEntity="Variety", inversedBy="plants")
      * @ORM\JoinTable(name="plant_variety")
      */
-    public $varieties;
+    private $varieties;
 
     /**
      * List of families where the plant is
      * (Owning side).
      *
      * @var Family[]
-     * @ORM\ManyToMany(targetEntity="Family", inversedBy="plant")
+     * @ORM\ManyToMany(targetEntity="Family", inversedBy="plants")
      * @ORM\JoinTable(name="plant_family")
      */
-    public $families;
+    private $families;
 
-    /**
-     * List of varieties where the plant is
-     * (Owning side).
-     *
-     * @var Variety[]
-     * @ORM\ManyToOne(targetEntity="Variety", inversedBy="plant", cascade={"persist"})
-     */
-   /** public $varieties; */
-
-    /**
-     * List of species where the plant is
-     * (Owning side).
-     *
-     * @var Specie[]
-     * @ORM\ManyToMany(targetEntity="Specie", inversedBy="plant")
-     * @ORM\JoinTable(name="plant_specie")
-     */
-    private $species;
-
-
-    /**
-     * @var PurchaseItem[]
-     * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="plant", cascade={"remove"})
-     */
-    private $purchasedItems;
-
-
-    /**
-     * @var Seed[]
-     * @ORM\OneToMany(targetEntity="Seed", mappedBy="plant", cascade={"remove"})
-     */
-    private $seeds;
-    
 
     public function __construct()
     {
@@ -184,6 +150,110 @@ class Plant
        $this->createdAt = new \DateTime();
        $this->updatedAt = new \DateTime();
     }
+
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+
+    /**
+     * List of species where the plant is
+     * (Owning side).
+     *
+     * @var Specie[]
+     * @ORM\ManyToMany(targetEntity="Specie", inversedBy="plants")
+     * @ORM\JoinTable(name="plant_specie")
+     */
+    private $species;
+
+    /**
+     * @return Variety[]
+     */
+    public function getVarieties()
+    {
+        return $this->varieties;
+    }
+
+    /**
+     * @param Variety[] $varieties
+     *
+     */
+    public function setVarieties($varieties)
+    {
+        foreach ($this->getvarieties() as $variety) {
+            $this->removeVariety($variety);
+        }
+        foreach ($varieties as $variety) {
+            $this->addVariety($variety);
+        }
+    }
+
+    /**
+     * @return Specie[]
+     */
+    public function getSpecies(): array
+    {
+        return $this->species;
+    }
+
+    /**
+     * @param Specie[] $species
+     */
+    public function setSpecies($species)
+    {
+        foreach ($this->getSpecies() as $specie) {
+            $this->removeSpecie($specie);
+        }
+        foreach ($species as $specie) {
+            $this->addSpecie($specie);
+        }
+    }
+
+    /**
+     * @return Seed[]
+     */
+   /* public function getSeeds(): array
+    {
+        return $this->seeds;
+    }
+
+    /**
+     * @param Seed[] $seeds
+     */
+   /* public function setSeeds(array $seeds)
+    {
+        $this->seeds = $seeds;
+    }
+
+
+    /**
+     * @var PurchaseItem[]
+     * @ORM\OneToMany(targetEntity="PurchaseItem", mappedBy="plant", cascade={"remove"})
+     */
+    /*private $purchasedItems;*/
+
+
+    /**
+     * @var Seed[]
+     * @ORM\ManyToMany(targetEntity="Seed", mappedBy="plants")
+     */
+    /*private $seeds; **/
+    
+
+
 
     /**
      * Add a variety in the plant association.
@@ -328,6 +398,28 @@ class Plant
     public function isEnabled()
     {
         return $this->getEnabled();
+    }
+
+    /**
+     * @return Family[]
+     */
+    public function getFamilies()
+    {
+        return $this->families;
+    }
+
+    /**
+     * @param Family[] $families
+     *
+     */
+    public function setFamilies($families)
+    {
+        foreach ($this->getfamilies() as $family) {
+            $this->removefamily($family);
+        }
+        foreach ($families as $family) {
+            $this->addFamily($family);
+        }
     }
 
     /**
