@@ -47,7 +47,7 @@ class Variety
     protected $plants;
 
     /**
-     * The category parent.
+     * The variety parent.
      *
      * @var Variety
      * @ORM\ManyToOne(targetEntity="Variety")
@@ -145,4 +145,25 @@ class Variety
         $this->plants->removeElement($plant);
         $plant->removeVariety($this);
     }
+
+    /**
+     * Set the parent variety.
+     *
+     * @param variety $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * Get the parent variety.
+     *
+     * @return variety
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
 }

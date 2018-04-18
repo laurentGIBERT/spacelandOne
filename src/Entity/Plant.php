@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\DateInterval;
 
 
 
@@ -18,8 +19,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @Vich\Uploadable
  */
+
+
 class Plant
 {
+
+
 
  /**
  * The identifier of the plant.
@@ -83,8 +88,8 @@ class Plant
     public $imageFile;
 
     /**
-     * Features of the plant.
-     * Associative array, the key is the name/type of the feature, and the value the data.
+     * Associations of the plant.
+     * Associative array, the key is the name/type of the Association, and the value the data.
      * Example:<pre>array(
      *     'size' => '13cm x 15cm x 6cm',
      *     'bluetooth' => '4.1'
@@ -93,7 +98,7 @@ class Plant
      * @var array
      * @ORM\Column(type="array")
      */
-    private $features = array();
+    private $associations = array();
 
     /**
      * The price of the plant.
@@ -120,6 +125,23 @@ class Plant
     private $description;
 
 
+
+    /**
+     * The start date of the sowing.
+     *
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="sowing_date_start")
+     */
+    private $sowingDateStart = null;
+
+
+    /**
+     * The end date of the sowing.
+     *
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="sowing_date_End")
+     */
+    private $sowingDateEnd = null;
 
     /**
      * List of categories where the plant is
@@ -149,6 +171,8 @@ class Plant
        $this->species = new ArrayCollection();
        $this->createdAt = new \DateTime();
        $this->updatedAt = new \DateTime();
+       $this->sowingDateStart = new \DateTime();
+       $this->sowingDateEnd = new \DateTime();
     }
 
 
@@ -225,7 +249,7 @@ class Plant
     /**
      * @return Seed[]
      */
-   /* public function getSeeds(): array
+   public function getSeeds(): array
     {
         return $this->seeds;
     }
@@ -233,7 +257,7 @@ class Plant
     /**
      * @param Seed[] $seeds
      */
-   /* public function setSeeds(array $seeds)
+   public function setSeeds(array $seeds)
     {
         $this->seeds = $seeds;
     }
@@ -250,7 +274,7 @@ class Plant
      * @var Seed[]
      * @ORM\ManyToMany(targetEntity="Seed", mappedBy="plants")
      */
-    /*private $seeds; **/
+    private $seeds;
     
 
 
@@ -423,24 +447,24 @@ class Plant
     }
 
     /**
-     * Set the list of features.
+     * Set the list of associations.
      * The parameter is an associative array (key as type, value as data.
      *
-     * @param array $features
+     * @param array $associations
      */
-    public function setFeatures($features)
+    public function setassociations($associations)
     {
-        $this->features = $features;
+        $this->associations = $associations;
     }
 
     /**
-     * Get all plant features.
+     * Get all plant associations.
      *
      * @return array
      */
-    public function getFeatures()
+    public function getassociations()
     {
-        return $this->features;
+        return $this->associations;
     }
 
     /**

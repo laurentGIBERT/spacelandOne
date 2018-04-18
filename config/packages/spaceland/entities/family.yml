@@ -10,7 +10,7 @@ easy_admin:
     entities:
         Family:
             class: App\Entity\Family
-            label: 'Families'
+            label: 'Family'
             list:
                 title: 'Family %%entity_label%%'
                 actions:

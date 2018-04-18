@@ -15,19 +15,22 @@ easy_admin:
         Plant:
             class: App\Entity\Plant
             label: 'Plants'
+
             list:
                 fields:
                     - name
                     - enabled
                     - description
                     - families
-                    #- {property: 'families', type: 'string'}
-                    - features
-                    - { property: 'price', format: '%.2f', css_class: text-right }
-                    #- { property: 'ean', type: 'string' }
+                    - associations
+                    - varieties
+                    #- { property: 'price', format: '%.2f', css_class: text-right }
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - { property: 'createdAt', format: 'j / M / Y' }
-                    - tags
+                    - { property: 'sowingDateStart', format: 'j / M' }
+                    - { property: 'sowingDateEnd', format: 'j / M' }
+                   # - tags
+                actions: [ { name: 'show', icon: 'search' } ]
             show:
                 fields:
 
@@ -35,13 +38,14 @@ easy_admin:
                     - description
                     - { property: 'enabled', label: 'Published' }
                     - createdAt
-                    - price
-                    - { property: 'ean', type: 'string' }
+                    - sowingDateStart
+                    - sowingDateEnd
+                    #- price
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
-                    - features
+                    - associations
                     - varieties
                     - families
-                    - tags
+                    #- tags
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
@@ -49,17 +53,21 @@ easy_admin:
                     - { property: 'description', type: 'ckeditor' }
                     - { type: 'divider' }
                     - { property: 'varieties', type: 'easyadmin_autocomplete' }
+                    - {type: 'divider'}
                     - { type: 'group', css_class: 'col-sm-4', label: 'Plant Details', icon: 'cube' }
                     - { property: 'families', type: 'easyadmin_autocomplete' }
 
                     #- { property: 'ean', help: 'EAN-13 valid code. Leave empty if unknown.' }
-                    - { property: 'price', type: 'number' }
+                    # - { property: 'price', type: 'number' }
                     - { type: 'section', label: 'Advanced Settings', icon: 'warning', help: 'Reserved for administrators use' }
                     - { property: 'enabled', label: 'Published' }
+                    - { property: 'sowingDateStart' }
+                    - { property: 'sowingDateEnd' }
                     - { property: 'createdAt' }
+
                     - { type: 'group', css_class: 'col-sm-8 new-row' }
-                    - { property: 'features' }
-                    - { type: 'group', css_class: 'col-sm-4' }
-                    - { property: 'tags' }
+                    - { property: 'associations' }
+                    # - { type: 'group', css_class: 'col-sm-4' }
+                    #- { property: 'tags' }
                     - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
                     - { property: 'imageFile', type: 'vich_image' }
