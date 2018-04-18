@@ -24,11 +24,14 @@ easy_admin:
                     - families
                     - associations
                     - varieties
+                    - transplantation
                     #- { property: 'price', format: '%.2f', css_class: text-right }
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - { property: 'createdAt', format: 'j / M / Y' }
                     - { property: 'sowingDateStart', format: 'j / M ' }
                     - { property: 'sowingDateEnd', format: 'j / M ' }
+                    - { property: 'harvestDateStart', format: 'j / M ' }
+                    - { property: 'harvestDateEnd', format: 'j / M ' }
                    # - tags
                 actions: [ { name: 'show', icon: 'search' } ]
             show:
@@ -43,6 +46,7 @@ easy_admin:
                     #- price
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - associations
+                    - transplantation
                     - { property: 'varieties', css_class: 'large'}
                     - families
                     #- tags
@@ -63,10 +67,14 @@ easy_admin:
                     - { property: 'enabled', label: 'Published' }
                     - { property: 'sowingDateStart' }
                     - { property: 'sowingDateEnd' }
+                    - { property: 'harvestDateStart' }
+                    - { property: 'harvestDateEnd' }
                     - { property: 'createdAt' }
 
                     - { type: 'group', css_class: 'col-sm-8 new-row' }
                     - { property: 'associations' }
+                    - { property: 'transplantation' }
+
                     # - { type: 'group', css_class: 'col-sm-4' }
                     #- { property: 'tags' }
                     - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }

@@ -154,7 +154,7 @@ class Plant
      * The start date of the sowing.
      *
      * @var \DateTime
-     * @ORM\Column(type="datetime", name="sowing_date_start")
+     * @ORM\Column(type="datetime", name="harvest_date_start")
      */
     private $harvestDateStart = null;
 
@@ -163,7 +163,7 @@ class Plant
      * The end date of the sowing.
      *
      * @var \DateTime
-     * @ORM\Column(type="datetime", name="sowing_date_end")
+     * @ORM\Column(type="datetime", name="harvest_date_end")
      */
     private $harvestDateEnd = null;
 
