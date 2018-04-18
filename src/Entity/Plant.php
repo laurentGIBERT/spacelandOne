@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Form\Extension\Core\Type\DateInterval;
+
 
 
 
@@ -124,6 +124,13 @@ class Plant
      */
     private $description;
 
+    /**
+     * The transplantation of the plant.
+     *
+     * @var string
+     * @ORM\Column(type="text")
+     */
+    private $transplantation;
 
 
     /**
@@ -139,9 +146,26 @@ class Plant
      * The end date of the sowing.
      *
      * @var \DateTime
-     * @ORM\Column(type="datetime", name="sowing_date_End")
+     * @ORM\Column(type="datetime", name="sowing_date_end")
      */
     private $sowingDateEnd = null;
+
+    /**
+     * The start date of the sowing.
+     *
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="sowing_date_start")
+     */
+    private $harvestDateStart = null;
+
+
+    /**
+     * The end date of the sowing.
+     *
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="sowing_date_end")
+     */
+    private $harvestDateEnd = null;
 
     /**
      * List of categories where the plant is
@@ -173,6 +197,10 @@ class Plant
        $this->updatedAt = new \DateTime();
        $this->sowingDateStart = new \DateTime();
        $this->sowingDateEnd = new \DateTime();
+       $this->harvestDateStart = new \DateTime();
+        $this->harvestDateEnd = new \DateTime();
+
+
     }
 
 
@@ -191,6 +219,89 @@ class Plant
     {
         $this->updatedAt = $updatedAt;
     }
+
+    /**
+     * @return string
+     */
+    public function getTransplantation(): string
+    {
+        return $this->transplantation;
+    }
+
+    /**
+     * @param string $transplantation
+     */
+    public function setTransplantation(string $transplantation)
+    {
+        $this->transplantation = $transplantation;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getHarvestDateStart(): \DateTime
+    {
+        return $this->harvestDateStart;
+    }
+
+    /**
+     * @param \DateTime $harvestDateStart
+     */
+    public function setHarvestDateStart(\DateTime $harvestDateStart)
+    {
+        $this->harvestDateStart = $harvestDateStart;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getHarvestDateEnd(): \DateTime
+    {
+        return $this->harvestDateEnd;
+    }
+
+    /**
+     * @param \DateTime $harvestDateEnd
+     */
+    public function setHarvestDateEnd(\DateTime $harvestDateEnd)
+    {
+        $this->harvestDateEnd = $harvestDateEnd;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getSowingDateStart(): \DateTime
+    {
+        return $this->sowingDateStart;
+    }
+
+    /**
+     * @param \DateTime $sowingDateStart
+     */
+    public function setSowingDateStart(\DateTime $sowingDateStart)
+    {
+        $this->sowingDateStart = $sowingDateStart;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getSowingDateEnd(): \DateTime
+    {
+        return $this->sowingDateEnd;
+    }
+
+    /**
+     * @param \DateTime $sowingDateEnd
+     */
+    public function setSowingDateEnd(\DateTime $sowingDateEnd)
+    {
+        $this->sowingDateEnd = $sowingDateEnd;
+    }
+
+
+
 
 
     /**

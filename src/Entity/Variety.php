@@ -151,7 +151,7 @@ class Variety
      *
      * @param variety $parent
      */
-    public function setParent($parent)
+    /**public function setParent($parent)
     {
         $this->parent = $parent;
     }
@@ -161,9 +161,10 @@ class Variety
      *
      * @return variety
      */
+    /**
     public function getParent()
     {
         return $this->parent;
     }
-
+ */
 }

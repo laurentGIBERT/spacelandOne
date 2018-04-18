@@ -27,8 +27,8 @@ easy_admin:
                     #- { property: 'price', format: '%.2f', css_class: text-right }
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - { property: 'createdAt', format: 'j / M / Y' }
-                    - { property: 'sowingDateStart', format: 'j / M' }
-                    - { property: 'sowingDateEnd', format: 'j / M' }
+                    - { property: 'sowingDateStart', format: 'j / M ' }
+                    - { property: 'sowingDateEnd', format: 'j / M ' }
                    # - tags
                 actions: [ { name: 'show', icon: 'search' } ]
             show:
@@ -43,7 +43,7 @@ easy_admin:
                     #- price
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - associations
-                    - varieties
+                    - { property: 'varieties', css_class: 'large'}
                     - families
                     #- tags
             form:
@@ -52,7 +52,7 @@ easy_admin:
                     - { property: 'name', css_class: 'large' }
                     - { property: 'description', type: 'ckeditor' }
                     - { type: 'divider' }
-                    - { property: 'varieties', type: 'easyadmin_autocomplete' }
+                    - { property: 'varieties', type: 'easyadmin_autocomplete', css_class: 'large' }
                     - {type: 'divider'}
                     - { type: 'group', css_class: 'col-sm-4', label: 'Plant Details', icon: 'cube' }
                     - { property: 'families', type: 'easyadmin_autocomplete' }
