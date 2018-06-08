@@ -11,22 +11,22 @@
 easy_admin:
     design:
         menu:
-            - label: 'plant'
+            - label: 'plante'
               icon: 'shopping-basket'
               children:
-                  - { entity: 'Plant', icon: 'th-list', label: 'liste_plante', params: { sortField: 'createdAt' }, default: true }
-                  - { entity: 'Variety', icon: 'tags', label: 'menu.variety' }
-                  - { entity: 'Plant', icon: 'plus-circle', label: 'menu.plant.add', params: { action: 'new' } }
-            - label: 'family'
+                  - { entity: 'Plant', icon: 'th-list', label: 'plante', params: { sortField: 'createdAt' }, default: true }
+                  - { entity: 'Variety', icon: 'tags', label: 'variété' }
+                  - { entity: 'Plant', icon: 'plus-circle', label: 'ajouter une plante', params: { action: 'new' } }
+            - label: 'famille'
               icon: 'tags'
               children:
-                  - { entity: 'Family', icon: 'th-list', label: 'menu.family.list', params: { sortField: 'createdAt' }, default: true }
+                  - { entity: 'Family', icon: 'th-list', label: 'liste des familles', params: { sortField: 'createdAt' }, default: true }
 
-                  - { entity: 'Family', icon: 'plus-circle', label: 'menu.family.add', params: { action: 'new' } }
+                  - { entity: 'Family', icon: 'plus-circle', label: 'ajouter une famille', params: { action: 'new' } }
 
-            - { label: 'menu.user', entity: 'User', icon: 'users' }
-            - { label: 'menu.purchase', entity: 'Purchase', icon: 'credit-card', params: { sortField: 'deliveryDate' } }
-            - { label: 'menu.about' }
-            - { label: 'menu.about.home', url: 'https://github.com/javiereguiluz/EasyAdminBundle', icon: 'home', target: '_blank' }
-            - { label: 'menu.about.docs', url: 'https://github.com/javiereguiluz/EasyAdminBundle#getting-started-guide', icon: 'book', target: '_blank' }
-            - { label: 'menu.about.issues', url: 'https://github.com/javiereguiluz/EasyAdminBundle/issues', icon: 'github', target: '_blank' }
+            #- { label: 'menu.user', entity: 'User', icon: 'users' }
+            #- { label: 'menu.purchase', entity: 'Purchase', icon: 'credit-card', params: { sortField: 'deliveryDate' } }
+           # - { label: 'menu.about' }
+            #- { label: 'menu.about.home', url: 'https://github.com/javiereguiluz/EasyAdminBundle', icon: 'home', target: '_blank' }
+            #- { label: 'menu.about.docs', url: 'https://github.com/javiereguiluz/EasyAdminBundle#getting-started-guide', icon: 'book', target: '_blank' }
+           # - { label: 'menu.about.issues', url: 'https://github.com/javiereguiluz/EasyAdminBundle/issues', icon: 'github', target: '_blank' }

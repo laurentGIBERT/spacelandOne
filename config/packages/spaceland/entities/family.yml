@@ -12,11 +12,12 @@ easy_admin:
             class: App\Entity\Family
             label: 'Family'
             list:
-                title: 'Family %%entity_label%%'
                 actions:
                     - { name: 'show', label: '', icon: 'search' }
                     - { name: 'edit', label: '', icon: 'edit' }
                     - { name: 'delete', label: '', icon: 'trash' }
+                title: 'Family %%entity_label%%'
+
                 fields:
                     - 'id'
                     - { property: 'name', label: 'Label' }

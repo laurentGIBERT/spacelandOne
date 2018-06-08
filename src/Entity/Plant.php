@@ -220,18 +220,17 @@ class Plant
         $this->updatedAt = $updatedAt;
     }
 
+
     /**
-     * @return string
+     * @return array
      */
-    public function getTransplantation(): string
+    public function getTransplantation()
     {
         return $this->transplantation;
     }
 
-    /**
-     * @param string $transplantation
-     */
-    public function setTransplantation(string $transplantation)
+
+    public function setTransplantation($transplantation)
     {
         $this->transplantation = $transplantation;
     }

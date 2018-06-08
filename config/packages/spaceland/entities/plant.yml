@@ -16,39 +16,49 @@ easy_admin:
             class: App\Entity\Plant
             label: 'Plants'
 
+
+
             list:
+
+                actions: [ { name: 'show', icon: 'search' } ]
                 fields:
+
                     - name
-                    - enabled
+
+                    #- enabled
                     - description
-                    - families
+                    #- families
                     - associations
-                    - varieties
-                    - transplantation
+                    #- varieties
+
                     #- { property: 'price', format: '%.2f', css_class: text-right }
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
-                    - { property: 'createdAt', format: 'j / M / Y' }
+                    # - { property: 'createdAt', format: 'j / M / Y' }
                     - { property: 'sowingDateStart', format: 'j / M ' }
                     - { property: 'sowingDateEnd', format: 'j / M ' }
+                    - transplantation
                     - { property: 'harvestDateStart', format: 'j / M ' }
                     - { property: 'harvestDateEnd', format: 'j / M ' }
                    # - tags
-                actions: [ { name: 'show', icon: 'search' } ]
+
             show:
                 fields:
 
                     - { property: 'name', css_class: 'large' }
                     - description
-                    - { property: 'enabled', label: 'Published' }
-                    - createdAt
+                    #- { property: 'enabled', label: 'Published' }
+                    #- createdAt
                     - sowingDateStart
                     - sowingDateEnd
+                    - harvestDateStart
+                    - harvestDateEnd
                     #- price
                     - { property: 'image', type: 'image', base_path: '%app.path.product_images%' }
                     - associations
                     - transplantation
-                    - { property: 'varieties', css_class: 'large'}
+                    #- { property: 'varieties', css_class: 'large'}
                     - families
+                    - varieties
                     #- tags
             form:
                 fields:
@@ -57,7 +67,7 @@ easy_admin:
                     - { property: 'description', type: 'ckeditor' }
                     - { type: 'divider' }
                     - { property: 'varieties', type: 'easyadmin_autocomplete', css_class: 'large' }
-                    - {type: 'divider'}
+                    - { type: 'divider'}
                     - { type: 'group', css_class: 'col-sm-4', label: 'Plant Details', icon: 'cube' }
                     - { property: 'families', type: 'easyadmin_autocomplete' }
 

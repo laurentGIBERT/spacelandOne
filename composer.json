@@ -15,13 +15,14 @@
     },
     "config": {
         "platform": {
-            "php": "7.0"
+            "php": "7.2"
         },
         "sort-packages": true
     },
     "require": {
         "php": "^7.0",
         "ext-pdo_sqlite": "*",
+        "ancarebeca/full-calendar-bundle": "^5.0",
         "egeloen/ckeditor-bundle": "dev-master",
         "javiereguiluz/easyadmin-bundle": "^1.17",
         "sensio/framework-extra-bundle": "^5.0",
